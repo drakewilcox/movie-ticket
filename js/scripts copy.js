@@ -1,14 +1,13 @@
-/// Business Logic for Output
+// Business Logic for Output
 
-function TicketList() {
+function MovieTicket() {
   this.tickets = [];
   this.ticketId = 0;
-  this.totalPrice = 0;
+  this.price = 0;
 }
 
-TicketList.prototype.addTicket = function(ticket) {
+MovieTicket.prototype.addTicket = function(ticket) {
   ticket.id = this.assignId();
-  
   this.tickets.push(ticket);
 }
 
@@ -20,27 +19,12 @@ TicketList.prototype.addTicket = function(ticket) {
 
 
 
-// MovieTicket.prototype.ticketPrice = function(ticket){
-//   for (var i=0; i< this.tickets.length; i++)
-//     if (this.tickets[i]){
-//       if (this.tickets[i].film === "feature"){
-        
-//       }
-  
-//     }
-// };
 
-
-TicketList.prototype.findPrice = function() {
-  if (ticket.film == "feature") { 
-  ticket.price == 6;
-  }
-}
-TicketList.prototype.assignId = function(){
+MovieTicket.prototype.assignId = function(){
   this.ticketId +=1;
   return this.ticketId;
 }
-TicketList.prototype.findTicket = function(id) {
+MovieTicket.prototype.findTicket = function(id) {
   for (var i=0; i< this.tickets.length; i++) {
     if (this.tickets[i]) {
       if (this.tickets[i].id == id) {
@@ -53,17 +37,15 @@ TicketList.prototype.findTicket = function(id) {
 
 // business logic for Ticket
 
-function Ticket(film, time, age, price) {
+function Ticket(film, time, age) {
   this.film = film,
   this.time = time,
-  this.age = age,
-  this.price = price;
- 
+  this.age = age;
 }
 
 // USER INTERFACE LOGIC:
 
-var ticketList = new TicketList();
+var movieTicket = new MovieTicket();
 
 $(document).ready(function()  {
   $("form#movies").submit(function(event) {
@@ -77,8 +59,7 @@ $(document).ready(function()  {
     $("#age").val();
 
 var newTicket = new Ticket(inputtedFilm, inputtedTime, inputtedAge);
-ticketList.addTicket(newTicket);
-tickets.findTicket(newTicket);
+movieTicket.addTicket(newTicket);
 // displayTicketDetails(movieTicket);
   });
 });
